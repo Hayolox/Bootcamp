@@ -24,7 +24,7 @@ Route::get('Login-Google', [AuthController::class, 'google'])->name('login-googl
 Route::get('auth/google/callback', [AuthController::class, 'GoogleCallback'])->name('google-callback');
 Route::get('Logout-User', [AuthController::class, 'logout'])->name('user-logout');
 
-Route::get('/Checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::get('/Checkout/{Model:slug}', [CheckoutController::class, 'index'])->name('checkout');
 
 Route::get('/Succes', [SuccesController::class, 'index'])->name('succes');
 

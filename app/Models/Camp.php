@@ -10,4 +10,9 @@ class Camp extends Model
 {
     use HasFactory,SoftDeletes;
     protected $fillable = ['title', 'slug'];
+
+    public function CampBenefit()
+    {
+       return $this->hasMany(CampBenefit::class, 'camp_id', 'id');
+    }
 }
