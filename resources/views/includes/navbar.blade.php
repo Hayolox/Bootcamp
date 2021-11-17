@@ -20,15 +20,30 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Business</a>
                 </li>
+                @auth
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('user-logout') }}">Log Out</a>
+                </li>
+                @endauth
             </ul>
-            <div class="d-flex">
-                <a href="{{ route('login-user') }}" class="btn btn-master btn-secondary me-3">
-                    Sign In
-                </a>
-                <a href="{{ route('login-user') }}" class="btn btn-master btn-primary">
-                    Sign Up
+            @auth
+            <div class="d-flex user-logged">
+                <a href="#">
+                    Halo,{{ Str::limit(Auth::user()->name, 20) }}
+                    <img src="{{ Auth::user()->avatar }}" class="user-photo" alt="">
                 </a>
             </div>
+            @endauth
+           @guest
+           <div class="d-flex">
+            <a href="{{ route('login-user') }}" class="btn btn-master btn-secondary me-3">
+                Sign In
+            </a>
+            <a href="{{ route('login-user') }}" class="btn btn-master btn-primary">
+                Sign Up
+            </a>
+        </div>
+           @endguest
         </div>
     </div>
 </nav>
